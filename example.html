@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Fast Compress Example</title>
+  </head>
+
+  <body>
+    <script>
+
+    var fast_compress;
+
+    WebAssembly.instantiateStreaming(fetch('fast_compress.wasm'))
+    .then(obj => {
+      fast_compress = obj.instance.exports;
+       console.log(fast_compress.bc1_fast_rgba(256, 256));
+    });
+    </script>
+  </body>
+
+</html>
