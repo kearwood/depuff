@@ -2,12 +2,6 @@ This WASM module implements compression compatible with WebGL's EXT_texture_comp
 
 https://www.khronos.org/registry/OpenGL/extensions/EXT/EXT_texture_compression_s3tc.txt
 
-Follow instructions on setting up Emscripten with SIMD here:
-
-https://brionv.com/log/2019/03/03/simd-in-webassembly-tales-from-the-bleeding-edge/
-
-
-
 
 Go to https://github.com/webassembly/wabt — follow the instructions on this page to set up the tool.
 
