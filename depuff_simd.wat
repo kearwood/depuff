@@ -83,6 +83,12 @@
     i32x4.splat
     i32x4.mul
     set_local $palette_step
+
+    ;; We perform a dot product to determine the position of each pixel
+    ;; color along a color line connecting palette_min and palette_max.
+    ;; Below 1/4 along the color line, the 1st palette entry is selected.
+    ;; At 1/4 along the color line, the 2nd palette entry is selected.
+    ;; At 3/4 along the color line, the 3rd palette entry is selected.
   else
     ;; No alpha values less than 0x80
     ;;
@@ -110,7 +116,12 @@
     i32x4.mul
     set_local $palette_step
 
-    ;; At 1/6 along the color line, the 
+    ;; We perform a dot product to determine the position of each pixel
+    ;; color along a color line connecting palette_min and palette_max.
+    ;; Below 1/6 along the color line, the 1st palette entry is selected.
+    ;; At 1/6 along the color line, the 2nd palette entry is selected.
+    ;; At 3/6 along the color line, the 3rd palette entry is selected.
+    ;; At 5/6 along the color line, the 4th palette entry is selected.
   end
 
 ;;   (local $min_color i32)
@@ -146,7 +157,7 @@
     i64.const 0
   )
 
-  (func $bc1_fast_rgba (param $width i32)(param $height i32)(result i64)
+  (func $bc1_fast_rgba (param $width i32)(param $height i32)(param $thread_id i32)(param $thread_count i32)(result i64)
     (local $pixel_address i32)
     (local $row_address i32)
     i32.const 0
