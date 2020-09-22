@@ -157,10 +157,10 @@
     i64.const 0
   )
 
-  (func $bc1_fast_rgba (param $width i32)(param $height i32)(param $thread_id i32)(param $thread_count i32)(result i64)
+  (func $bc1_fast_rgba (param $input_address i32)(param $output_address i32)(param $width i32)(param $height i32)(param $thread_id i32)(param $thread_count i32)(result i64)
     (local $pixel_address i32)
     (local $row_address i32)
-    i32.const 0
+    get_local $input_address
     set_local $pixel_address
 
     ;; Load Row 0 of Block
