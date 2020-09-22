@@ -124,36 +124,6 @@
     ;; At 5/6 along the color line, the 4th palette entry is selected.
   end
 
-;;   (local $min_color i32)
-;;   (local $max_color i32)
-;;   (local $pixel_index i32)
-;;   
-;;   i32.const 0
-;;   set_local $max_color
-;;   i32.const 0xffffffff
-;;   set_local $min_color
-;;
-;;    i32.const 0
-;;    set_local $pixel_index
-;;
-;;    loop
-;;
-;;      get_local $max_color
-;;      i32.const 100100
-;;      i32.add
-;;      set_local $max_color
-;;
-;;      get_local $pixel_index
-;;      i32.const 1
-;;      i32.add
-;;      tee_local $pixel_index
-;;
-;;      i32.const 16
-;;      i32.lt_u
-;;      br_if 0
-;;
-;;    end
-
     i64.const 0
   )
 
