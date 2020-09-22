@@ -158,13 +158,15 @@
   )
 
   (func $bc1_fast_rgba (param $input_address i32)(param $output_address i32)(param $width i32)(param $height i32)(param $thread_id i32)(param $thread_count i32)(result i64)
-    (local $pixel_address i32)
+    (local $block_address i32)
     (local $row_address i32)
+    
     get_local $input_address
-    set_local $pixel_address
+    set_local $block_address
 
+    
     ;; Load Row 0 of Block
-    get_local $pixel_address
+    get_local $block_address
     tee_local $row_address
     v128.load
 
@@ -192,10 +194,10 @@
     call $bc1_fast_compress_block
 
     ;; Advance to next block
-    get_local $pixel_address
+    get_local $block_address
     i32.const 4
     i32.add
-    set_local $pixel_address
+    set_local $block_address
   )
 
   (export "bc1_fast_rgba" (func $bc1_fast_rgba))
